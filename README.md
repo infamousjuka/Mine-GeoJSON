@@ -107,10 +107,10 @@ Beispielstruktur (vereinfacht):
 "type": "Feature",
 "geometry": {
 "type": "Point",
-"coordinates": [32UNB, 392000.212, 5821000.213]
+"coordinates": [32UNB, 392000, 582100]
 },
 "properties": {
-"id": "UXO-20250320-001",
+"id": "001",
 "type": "UXO",
 "hazard_status": "suspected",
 "last_update": "2025-03-20T10:45:00Z"
@@ -140,10 +140,10 @@ Example structure (simplified):
 "type": "Feature",
 "geometry": {
 "type": "Point",
-"coordinates": [32UNB, 392000.212, 5821000.213]
+"coordinates": [32UNB, 39200, 58210]
 },
 "properties": {
-"id": "UXO-20250320-001",
+"id": "001",
 "type": "UXO",
 "hazard_status": "suspected",
 "last_update": "2025-03-20T10:45:00Z"
@@ -170,11 +170,11 @@ These definitions are binding for all manufacturers and systems implementing Min
 | 1 | `id` | Eigene Definition Own Defenition| Eindeutige Fund-ID[z.B. “1,2,3,4,5,6”] <br/> Unique ID of the find [e.g. “1.2,3,4,5,6”]| Number |
 | 2 | `sensor` | Eigene Definition Own Defenition| Messgerät [z.B. “Magnetometer”] <br/> Measuring equipment [e.g. “magnetometer”]| String |
 | 3 | `unit` | Eigene Definition Own Defenition| Einheit der Messung[z.B. “nT”, “m”, “EA”] <br/> Unit of measurement e.g. “nT”, “m”, “EA”] | String |
-| 4 | `detection_confidence` | Eigene Definition Own Defenition| Wahrscheinlichkeit für Echtheit in %[z.B. 0.87, 99, 1] <br/> Probability of authenticity in % [e.g. 0.87, 99, 1] | Number |
+| 4 | `detection_confidence` | Eigene Definition Own Defenition| Wahrscheinlichkeit für Echtheit in %[z.B. 0.87, 0.99, 1] <br/> Probability of authenticity in % [e.g. 0.87, 0.99, 1] | Number |
 | 5 | `status` | Eigene Definition Own Defenition| Status[”Bestätigt” / “Unbestätigt”]  <br/> Status ["confirmed” / “unconfirmed”] | Boolean |
 | 6 | `source` | Eigene Definition Own Defenition| Trägerplattform [z.B. “UAV”, “UGV”]  <br/> Carrier platform [e.g. “UAV”, “UGV”] | String |
 | 7 | `depth_estimate` | Eigene Definition Own Defenition| Geschätzte Tiefe[z.B. -2.1, -0.3]  <br/> Estimated depth [e.g. -2.1, -0.3] | Number |
-| 8 | `last_udpate` | Eigene Definition Own Defenition| Letzte Aktualisierung[z. B. “260900Amar25”]  <br/> Last update [e.g. “260900Amar25”] | String |
+| 8 | `last_update` | Eigene Definition Own Defenition| Letzte Aktualisierung[z. B. “260900Amar25”]  <br/> Last update [e.g. “260900Amar25”] | String |
 | 9 | `image` | Eigene Definition Own Defenition| Optionales Bildmaterial <br/> Optional imagery |  |
 | 10 | `geotiff` | Eigene Definition Own Defenition| Georeferenziertes Bildmaterial (GeoTIFF)  <br/> Georeferenced imagery (GeoTIFF) |  |
 | 11 | `hazard_id` | IMSMA | Minenfeld- oder Bereichs ID  <br/> Minefield or area ID | String |
@@ -183,16 +183,16 @@ These definitions are binding for all manufacturers and systems implementing Min
 | 14 | `accessibility` | IMSMA | Zugangsbeschränkungen des sondierten Gebietes[Freitext]  <br/> Acces restrictions regarding the probed area [free text] | String |
 | 15 | `survey_type` | IMSMA | Erkundungsmethode [”technical”, “non-technical”]  <br/> Reconnaissance method [“technical”, “non-technical”] | String |
 | 16 | `data_source` | IMSMA | Quelle der Information [”KI”, “NGO”, “Soldat”} <br/> Source of information [“AI”, “NGO”, “Soldier”] | String |
-| 17 | `verfication_type` | IMSMA | Art der Überprüfung nach Sondierung[Freitext: “visuell”, “manuell”, “etc.”)  <br/> Type of verification after probing [free text: “visually”, “manually”, “etc.”) | String |
+| 17 | `verification_type` | IMSMA | Art der Überprüfung nach Sondierung[Freitext: “visuell”, “manuell”, “etc.”)  <br/> Type of verification after probing [free text: “visually”, “manually”, “etc.”) | String |
 | 18 | `dtg` | NATO-STANAG 2221 | Datum-Zeit-Gruppe des Fundes / der Messung[z. B. “260900Amar25”] <br/> Date-time group of the find/measurement [e.g. “260900Amar25”] | String |
 | 19 | `reporting_unit` | NATO-STANAG 2221 | Meldende Einheit [z.B. “LLPiKp 270”]  <br/> Reporting unit [e.g. “270 AB Engr Coy”] | String |
-| 20 | `linkup_location` | NATO-STANAG 2221 | Ort für Verbindungsaufnahme mit meldender Einheit (UTM-Format)[z.B. “347669, 5576127”] <br/> Location for establishing communication with to reporting unit (UTM format) [e.g. “347669, 5576127”] | String |
+| 20 | `linkup_location` | NATO-STANAG 2221 | Ort für Verbindungsaufnahme mit meldender Einheit (UTM-Format)[z.B. “34769, 55761”] <br/> Location for establishing communication with to reporting unit (UTM format) [e.g. “34769, 55761”] | String |
 | 21 | `linkup_method` | NATO-STANAG 2221 | Kommunikationsart für Verbindungsaufnahme mit meldender Einheit[z.B. “Funkfrequenz” , “Sichtzeichen”] <br/> Communication type for establishing communication with reporting unit [e.g. “radio frequency”, “visual signal”] | String |
 | 22 | `type` | NATO-STANAG 2221 | Art des Kampfmittels[z.B. Geschoss, 155mm / Mine, Panzerabwehr/Schützenabwehr / Granate, Hand] <br/> Type of explosive ordnance [e.g. shell, 155mm / mine, anti-tank / antipersonnel / grenade, hand] | String |
 | 23 | `subtype` | NATO-STANAG 2221 | Munitionssorte des Kampfmittels [z.B. HE / HE-FRAG / AP / HEAT / APHE / …] <br/> Ammunition type of ordnance [e.g. HE / HE - FRAG / AP / HEAT / APHE / …] | String |
 | 24 | `amount` | NATO-STANAG 2221 | Anzahl der Kampfmittel [z.B. 2 EA ("each"] <br/> number of EOs [e.g. 2 EA (“each”] | String | 
 | 25 | `description` | NATO-STANAG 2221 | Freitextbeschreibung des Kampfmittels [z.B. zylindrisches Geschoss, Kaliber ca. 155mm, mit kegelförmiger Spitze] <br/> Free text description of the ordnance [e.g. cylindrical projectile, calibre approx. 155mm, with conical tip] | String |
-| 26 | `location` | NATO-STANAG 2221 | Fundort des Kampfmittels - MGRS[z.B.”32UNB, 347669, 5576127”] <br/> Location of the ordnance item – MGRS [ e.g. “32UNB, 347669, 5576127”] | String |
+| 26 | `location` | NATO-STANAG 2221 | Fundort des Kampfmittels - MGRS[z.B.”32UNB, 34769, 55761”] <br/> Location of the ordnance item – MGRS [ e.g. “32UNB, 34769, 55761”] | String |
 | 27 | `tactical_situation` | NATO-STANAG 2221 | Einfluss des gefundenen Kampfmittels auf die eigene Auftragserfüllung [”None” , “Low”, “Medium”, “High”] <br/> Influence of the found ordnance on own mission performance [ˮNoneˮ, "Lowˮ, "Mediumˮ," Highˮ] | String |
 | 28 | `collateral_dmg` | NATO-STANAG 2221 | Bereits eingetretene oder mögliche Begleitschäden [z.B. “Funkturm als kritische Infrastruktur direkt nebenan”] <br/> [e.g. "Radio tower as critical infrastructure directly adjoining”] | String |
 | 29 | `protective_actions` | NATO-STANAG 2221 | eingeleitete Schutzmaßnahmen [z.B. “umliegende Häuser evakuiert”] <br/> Protective measures initiated [e.g. “surrounding houses evacuated”] | String |
@@ -368,13 +368,13 @@ The following are typical use cases where Mine-GeoJSON is used. The examples sho
 "type": "Feature",
 "geometry": {
 "type": "Point",
-"coordinates": [32UNB, 392000, 5821000]
+"coordinates": [32UNB, 39200, 58210]
 },
 "properties": {
-"id": "UXO-20250320-001",
+"id": "001",
 "type": "UXO",
 "hazard_status": "suspected",
-"recorded_at": "2025-03-20T10:45:00Z",
+"last_update": "2025-03-20T10:45:00Z",
 "sensor": "MAG-01",
 "detection_confidence": 0.89,
 "reporting_unit": "LLPiKp 270"
@@ -390,7 +390,7 @@ The following are typical use cases where Mine-GeoJSON is used. The examples sho
 "type": "Feature",
 "geometry": {
 "type": "Polygon",
-"coordinates": [[[32UNB, 392000, 5821000], [32UNB, 392050, 5821000], [32UNB, 392050, 5821050], [32UNB, 392000, 5821050], [32UNB, 392000, 5821000]]]
+"coordinates": [[[32UNB, 39200, 58210], [32UNB, 39205, 58210], [32UNB, 39205, 58210], [32UNB, 39200, 58210], [32UNB, 39200, 58210]]]
 },
 "properties": {
 "hazard_id": "AREA-03",
@@ -409,7 +409,7 @@ The following are typical use cases where Mine-GeoJSON is used. The examples sho
 "features": [
 {
 "type": "Feature",
-"geometry": { "type": "Point", "coordinates": [32UNB, 392000, 5821000] },
+"geometry": { "type": "Point", "coordinates": [32UNB, 39200, 58210] },
 "properties": {
 "amount": "1 EA",
 "image": "images/TM62M-001.jpg",
@@ -417,7 +417,7 @@ The following are typical use cases where Mine-GeoJSON is used. The examples sho
 },
 {
 "type": "Feature",
-"geometry": { "type": "Point", "coordinates": [32UNB, 392002, 5821000] },
+"geometry": { "type": "Point", "coordinates": [32UNB, 39202, 58210] },
 "properties": {
 "amount": "1 EA",
 "image": "images/TM62M-002.jpg",
@@ -425,7 +425,7 @@ The following are typical use cases where Mine-GeoJSON is used. The examples sho
 },
 {
 "type": "Feature",
-"geometry": { "type": "Point", "coordinates": [32UNB, 392004, 5821000] },
+"geometry": { "type": "Point", "coordinates": [32UNB, 39204, 58210] },
 "properties": {
 "amount": "1 EA",
 "image": "images/TM62M-003.jpg",
@@ -433,7 +433,7 @@ The following are typical use cases where Mine-GeoJSON is used. The examples sho
 },
 {
 "type": "Feature",
-"geometry": { "type": "Point", "coordinates": [32UNB, 392006, 5821000] },
+"geometry": { "type": "Point", "coordinates": [32UNB, 39206, 58210] },
 "properties": {
 "amount": "1 EA",
 "image": "images/TM62M-004.jpg",
@@ -441,7 +441,7 @@ The following are typical use cases where Mine-GeoJSON is used. The examples sho
 },
 {
 "type": "Feature",
-"geometry": { "type": "Point", "coordinates": [32UNB, 392008, 5821000] },
+"geometry": { "type": "Point", "coordinates": [32UNB, 39208, 58210] },
 "properties": {
 
 "amount": "1 EA",
@@ -472,8 +472,7 @@ Mine-GeoJSON ist so gestaltet, dass es sich nahtlos in bestehende Informationssy
 - Verwendung standardisierter Layer- und Objektbeschreibungen
 
 ### 10. Integration in existing systems
-M
-INE-GeoJSON is designed to integrate seamlessly with existing information systems. This includes both military command and control systems and civilian GIS applications.
+MINE-GeoJSON is designed to integrate seamlessly with existing information systems. This includes both military command and control systems and civilian GIS applications.
 Compatible platforms
 - QGIS, ArcGIS, Kepler.gl, etc.
 - Location information systems with JSON/GeoJSON interface
