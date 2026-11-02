@@ -180,7 +180,7 @@ These definitions are binding for all manufacturers and systems implementing Min
 | 11 | `hazard_id` | IMSMA | Minenfeld- oder Bereichs ID  <br/> Minefield or area ID | String |
 | 12 | `hazard_status` | IMSMA | Status des Gebietes[”suspected”, “confirmed”]  <br/> Status of the area [“suspected”, “confirmed”] | String |
 | 13 | `land_use` | IMSMA | Aktuelle Landnutzung[z.B. Feld, Straße]  <br/> Current land use [e.g. field, road] | String |
-| 14 | `accessibility` | IMSMA | Zugangsbeschränkungen des sondierten Gebietes[Freitext]  <br/> Acces restrictions regarding the probed area [free text] | String |
+| 14 | `accessibility` | IMSMA | Zugangsbeschränkungen des sondierten Gebietes[Freitext]  <br/> Access restrictions regarding the probed area [free text] | String |
 | 15 | `survey_type` | IMSMA | Erkundungsmethode [”technical”, “non-technical”]  <br/> Reconnaissance method [“technical”, “non-technical”] | String |
 | 16 | `data_source` | IMSMA | Quelle der Information [”KI”, “NGO”, “Soldat”} <br/> Source of information [“AI”, “NGO”, “Soldier”] | String |
 | 17 | `verification_type` | IMSMA | Art der Überprüfung nach Sondierung[Freitext: “visuell”, “manuell”, “etc.”)  <br/> Type of verification after probing [free text: “visually”, “manually”, “etc.”) | String |
@@ -553,7 +553,7 @@ Youtube Link: https://youtu.be/I4TvcCWCnZo?si=7fIkJjQ65l3BrP6O
 Wir freuen uns über Ihre Kontaktaufnahme, wenn Sie Interesse an der Nutzung von Mine-GeoJSON haben oder uns Feedback geben möchten!
 
 ### 13. Contact & further development
-The data standard was initiated by the Bundeswehr Cyber Innovation Hub and was significantly developed under the project management of Alexander Petri, Ulf Steden, Captain Heinemann and Captain Krämer as part of the innovation project #172 – Minesweeper.
+The data standard was initiated by the Bundeswehr Cyber Innovation Hub and was significantly developed under the project management of Alexander Petri, Ulf Steden, Captain Krämer and the Airborne Engineer Company 270 as part of the innovation project #172 – Minesweeper.
 
 ### Kontaktstelle
 
