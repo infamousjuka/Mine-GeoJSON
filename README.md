@@ -383,6 +383,8 @@ The following are typical use cases where Mine-GeoJSON is used. The examples sho
         "id": "001",
         "type": "UXO",
         "subtype": "PTAB",
+        "unit": "EA",
+        "amount": "1",
         "description": "cylindrical with fins",
         "hazard_status": "suspected",
         "hazard_id": "AREA-03",
@@ -394,7 +396,11 @@ The following are typical use cases where Mine-GeoJSON is used. The examples sho
         "survey_type": "technical",
         "data_source": "UAV-Software",
         "detection_confidence": 0.89,
-        "reporting_unit": "LLPiKp 270"
+        "reporting_unit": "LLPiKp 270",
+        "linkup_location": [
+                            "32UPE",
+                            "61617",
+                            "89007"]
         }
 }
 ```
@@ -407,8 +413,30 @@ The following are typical use cases where Mine-GeoJSON is used. The examples sho
 "type": "Feature",
 "geometry": {
 "type": "Polygon",
-"coordinates": [[[32UNB, 39200, 58210], [32UNB, 39205, 58210], [32UNB, 39205, 58210], [32UNB, 39200, 58210], [32UNB, 39200, 58210]]]
-},
+"coordinates": [
+                [
+                    ["32UNB",
+                    "39200",
+                    "58210"],
+
+                        ["32UNB",
+                        "39205",
+                        "58210"],
+
+                            ["32UNB",
+                            "39205",
+                            "58210"],
+
+                                ["32UNB",
+                                "39200",
+                                "58210"],
+
+                                    ["32UNB",
+                                    "39200",
+                                    "58210"]
+                ]
+               ]
+            },
 "properties": {
 "hazard_id": "AREA-03",
 "hazard_status": "confirmed",
@@ -426,42 +454,61 @@ The following are typical use cases where Mine-GeoJSON is used. The examples sho
 "features": [
 {
 "type": "Feature",
-"geometry": { "type": "Point", "coordinates": [32UNB, 39200, 58210] },
+"geometry": { "type": "Point",
+"coordinates": ["32UNB",
+                "39200",
+                "58210"] },
 "properties": {
-"amount": "1 EA",
+"unit": "EA",
+"amount": "1",
 "image": "images/TM62M-001.jpg",
 }
 },
 {
 "type": "Feature",
-"geometry": { "type": "Point", "coordinates": [32UNB, 39202, 58210] },
+"geometry": { "type": "Point",
+"coordinates":  ["32UNB",
+                "39202",
+                "58210"] },
 "properties": {
-"amount": "1 EA",
+"unit": "EA",
+"amount": "1",
 "image": "images/TM62M-002.jpg",
 }
 },
 {
 "type": "Feature",
-"geometry": { "type": "Point", "coordinates": [32UNB, 39204, 58210] },
+"geometry": { "type": "Point",
+"coordinates":  ["32UNB",
+                "39204",
+                "58210"] },
 "properties": {
-"amount": "1 EA",
+"unit": "EA",
+"amount": "1",
 "image": "images/TM62M-003.jpg",
 }
 },
 {
 "type": "Feature",
-"geometry": { "type": "Point", "coordinates": [32UNB, 39206, 58210] },
+"geometry": { "type": "Point",
+"coordinates": ["32UNB",
+                "39206",
+                "58210"] },
 "properties": {
-"amount": "1 EA",
+"unit": "EA",
+"amount": "1",
 "image": "images/TM62M-004.jpg",
 }
 },
 {
 "type": "Feature",
-"geometry": { "type": "Point", "coordinates": [32UNB, 39208, 58210] },
+"geometry": { "type": "Point",
+"coordinates": ["32UNB",
+                "39208",
+                "58210"] },
 "properties": {
-
-"amount": "1 EA",
+"unit": "EA",
+"amount": "1",
 "image": "images/TM62M-005.jpg",
 }
 }
