@@ -101,23 +101,26 @@ Beispielstruktur (vereinfacht):
 
 ```json
 {
-"type": "FeatureCollection",
-"features": [
-{
-"type": "Feature",
-"geometry": {
-"type": "Point",
-"coordinates": [32UNB, 392000, 582100]
-},
-"properties": {
-"id": "001",
-"type": "UXO",
-"hazard_status": "suspected",
-"last_update": "2025-03-20T10:45:00Z"
-}
-}
-]
-}
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "32UPE",
+          "60003",
+          "85055"
+        ]
+      },
+      "properties": {
+        "id": 1,
+        "last_update": "2025-04-17T11:54:19Z",
+        "data_source": "UAV-Software",
+        "type": "UXO"
+        "subtype": "PTAB"
+      }
+    }
 ```
 
 Weitere Details zu den Feldern finden sich im nächsten Kapitel.
@@ -134,22 +137,27 @@ Example structure (simplified):
 
 ```json
 {
-"type": "FeatureCollection",
-"features": [
-{
-"type": "Feature",
-"geometry": {
-"type": "Point",
-"coordinates": [32UNB, 39200, 58210]
-},
-"properties": {
-"id": "001",
-"type": "UXO",
-"hazard_status": "suspected",
-"last_update": "2025-03-20T10:45:00Z"
-}
-}
-]
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "32UPE",
+          "60003",
+          "85055"
+        ]
+      },
+      "properties": {
+        "id": 1,
+        "last_update": "2025-04-17T11:54:19Z",
+        "data_source": "UAV-Software",
+        "type": "UXO",
+        "subtype": "PTAB"
+      }
+    }
+  ]
 }
 ```
 
@@ -366,19 +374,28 @@ The following are typical use cases where Mine-GeoJSON is used. The examples sho
 ```json
 {
 "type": "Feature",
-"geometry": {
-"type": "Point",
-"coordinates": [32UNB, 39200, 58210]
-},
-"properties": {
-"id": "001",
-"type": "UXO",
-"hazard_status": "suspected",
-"last_update": "2025-03-20T10:45:00Z",
-"sensor": "MAG-01",
-"detection_confidence": 0.89,
-"reporting_unit": "LLPiKp 270"
-}
+    "geometry": {
+    "type": "Point",
+    "coordinates": ["32UPE", "60003", "85055"]
+    },
+    
+    "properties": {
+        "id": "001",
+        "type": "UXO",
+        "subtype": "PTAB",
+        "description": "cylindrical with fins",
+        "hazard_status": "suspected",
+        "hazard_id": "AREA-03",
+        "dtg": "2026-11-01T08:07:43Z",
+        "last_update": "2026-10-01T08:10:00Z",
+        "sensor": "optical",
+        "depth_estimate": -0.1,
+        "source": "UAV",
+        "survey_type": "technical",
+        "data_source": "UAV-Software",
+        "detection_confidence": 0.89,
+        "reporting_unit": "LLPiKp 270"
+        }
 }
 ```
 
@@ -553,7 +570,7 @@ Youtube Link: https://youtu.be/I4TvcCWCnZo?si=7fIkJjQ65l3BrP6O
 Wir freuen uns über Ihre Kontaktaufnahme, wenn Sie Interesse an der Nutzung von Mine-GeoJSON haben oder uns Feedback geben möchten!
 
 ### 13. Contact & further development
-The data standard was initiated by the Bundeswehr Cyber Innovation Hub and was significantly developed under the project management of Alexander Petri, Ulf Steden, Captain Krämer and the Airborne Engineer Company 270 as part of the innovation project #172 – Minesweeper.
+The data standard was initiated by the Bundeswehr Cyber Innovation Hub and was significantly developed under the project management of Alexander Petri, Ulf Steden, Erik Krämer and the Airborne Engineer Company 270 as part of the innovation project #172 – Minesweeper.
 
 ### Kontaktstelle
 
