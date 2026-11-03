@@ -511,7 +511,7 @@ The following are typical use cases where Mine-GeoJSON is used. The examples sho
 "properties": {
 "unit": "EA",
 "amount": "1",
-"image": "images/TM62M-005.jpg",
+"image": "images/TM62M-005.jpg"
 }
 }
 ]
@@ -625,12 +625,12 @@ The data standard was initiated by the Bundeswehr Cyber Innovation Hub and was s
 
 ---
 
-░█████╗░██╗██╗░░██╗██████╗░░██╗░░░░░░░██╗
-██╔══██╗██║██║░░██║██╔══██╗░██║░░██╗░░██║
-██║░░╚═╝██║███████║██████╦╝░╚██╗████╗██╔╝
-██║░░██╗██║██╔══██║██╔══██╗░░████╔═████║░
-╚█████╔╝██║██║░░██║██████╦╝░░╚██╔╝░╚██╔╝░
-░╚════╝░╚═╝╚═╝░░╚═╝╚═════╝░░░░╚═╝░░░╚═╝░░
+░█████╗░██╗██╗░░██╗██████╗░░██╗░░░░░░░██╗<br/>
+██╔══██╗██║██║░░██║██╔══██╗░██║░░██╗░░██║<br/>
+██║░░╚═╝██║███████║██████╦╝░╚██╗████╗██╔╝<br/>
+██║░░██╗██║██╔══██║██╔══██╗░░████╔═████║░<br/>
+╚█████╔╝██║██║░░██║██████╦╝░░╚██╔╝░╚██╔╝░<br/>
+░╚════╝░╚═╝╚═╝░░╚═╝╚═════╝░░░░╚═╝░░░╚═╝░░<br/>
 
 **Cyber Innovation Hub der Bundeswehr**
 
@@ -646,4 +646,4 @@ https://www.cyberinnovationhub.de/
 
 ### Versionsführung
 
-- Aktuelle Version: **v0.3** (Stand: 01.10.2025)
+- Aktuelle Version: **v0.4** (Stand: 03.11.2026)
