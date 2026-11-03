@@ -117,10 +117,12 @@ Beispielstruktur (vereinfacht):
         "id": 1,
         "last_update": "2025-04-17T11:54:19Z",
         "data_source": "UAV-Software",
-        "type": "UXO"
+        "type": "UXO",
         "subtype": "PTAB"
       }
     }
+  ]
+}
 ```
 
 Weitere Details zu den Feldern finden sich im nächsten Kapitel.
