@@ -1,7 +1,7 @@
 # Mine-GeoJSON
 A vendor-neutral GeoJSON standard for minefield reconnaissance data
 
-## Mine-GeoJSON v0.3
+## Mine-GeoJSON v0.4
 
 ---
 
@@ -46,7 +46,7 @@ Der Standard ist:
 
 ### 2. Overview of Mine-GeoJSON
 
-MINE-GeoJSON is based on the GeoJSON standard (RFC 7946) and extends it to include ordnance-specific properties.
+Mine-GeoJSON is based on the GeoJSON standard (RFC 7946) and extends it to include ordnance-specific properties.
 This standard is:
 - **open**: freely accessible and documented
 - **manufacturer-independent**: usable for all sensor systems
@@ -78,7 +78,7 @@ This standard is:
 ### 3. Technical specifications
 
 - **Format base**: GeoJSON (RFC 7946-compliant)
-- **Data structure**: FeatureCollection  feature  geometry + properties
+- **Data structure**: FeatureCollection → Feature → geometry + properties
 - **Geometry type**: Point for single finds, area optional (“polygon”)
 - **Coordinate system**: MGRS / UTMREF (WGS84) – [Deviating from GeoJSON Specification WGS84]
     - Note: Although GeoJSON officially requires WGS84 (longitude/latitude), Mine-GeoJSON uses the NATO MGRS standard for practical and tactical reasons. Systems processing Mine-GeoJSON must take this into account.
@@ -116,7 +116,7 @@ Beispielstruktur (vereinfacht):
       "properties": {
         "id": 1,
         "last_update": "2025-04-17T11:54:19Z",
-        "data_source": "UAV-Software",
+        "data_source": "KI",
         "type": "UXO",
         "subtype": "PTAB"
       }
@@ -129,11 +129,11 @@ Weitere Details zu den Feldern finden sich im nächsten Kapitel.
 
 ### 4. Structure of the data format
 
-MINE-GeoJSON is a standardized GeoJSON file. The core of the file is a `FeatureCollection` that contains individual objects (finds) as  `Feature`  .
+Mine-GeoJSON is a standardized GeoJSON file. The core of the file is a `FeatureCollection` that contains individual objects (finds) as  `Feature`  .
 
 Each feature consists of:
-- A   block of coordinates (MGRS)
-- A   block with associated attributes
+- A geometry block with the coordinates (MGRS)
+- A properties block with the associated attributes
 
 Example structure (simplified):
 
@@ -154,7 +154,7 @@ Example structure (simplified):
       "properties": {
         "id": 1,
         "last_update": "2025-04-17T11:54:19Z",
-        "data_source": "UAV-Software",
+        "data_source": "KI",
         "type": "UXO",
         "subtype": "PTAB"
       }
@@ -171,28 +171,27 @@ Die folgende Tabelle listet alle aktuell definierten Felder (Properties) auf, di
 Diese Definitionen sind verbindlich für alle Hersteller und Systeme, die Mine-GeoJSON implementieren.
 
 The following table lists all currently defined fields (properties) that can be used in the properties block of each GeoJSON feature.
-Manual for Industrial Partners
 These definitions are binding for all manufacturers and systems implementing Mine-GeoJSON.
 
 
 |Nummer| Feldname | Herkunft | Beschreibung | Datentyp |
 | --- | --- | --- | --- | --- |
-| 1 | `id` | Eigene Definition Own Defenition| Eindeutige Fund-ID[z.B. “1,2,3,4,5,6”] <br/> Unique ID of the find [e.g. “1.2,3,4,5,6”]| Number |
-| 2 | `sensor` | Eigene Definition Own Defenition| Messgerät [z.B. “Magnetometer”] <br/> Measuring equipment [e.g. “magnetometer”]| String |
-| 3 | `unit` | Eigene Definition Own Defenition| Einheit der Messung[z.B. “nT”, “m”, “EA”] <br/> Unit of measurement e.g. “nT”, “m”, “EA”] | String |
-| 4 | `detection_confidence` | Eigene Definition Own Defenition| Wahrscheinlichkeit für Echtheit in %[z.B. 0.87, 0.99, 1] <br/> Probability of authenticity in % [e.g. 0.87, 0.99, 1] | Number |
-| 5 | `status` | Eigene Definition Own Defenition| Status[”Bestätigt” / “Unbestätigt”]  <br/> Status ["confirmed” / “unconfirmed”] | Boolean |
-| 6 | `source` | Eigene Definition Own Defenition| Trägerplattform [z.B. “UAV”, “UGV”]  <br/> Carrier platform [e.g. “UAV”, “UGV”] | String |
-| 7 | `depth_estimate` | Eigene Definition Own Defenition| Geschätzte Tiefe[z.B. -2.1, -0.3]  <br/> Estimated depth [e.g. -2.1, -0.3] | Number |
-| 8 | `last_update` | Eigene Definition Own Defenition| Letzte Aktualisierung[z. B. “260900Amar25”]  <br/> Last update [e.g. “260900Amar25”] | String |
-| 9 | `image` | Eigene Definition Own Defenition| Optionales Bildmaterial <br/> Optional imagery |  |
-| 10 | `geotiff` | Eigene Definition Own Defenition| Georeferenziertes Bildmaterial (GeoTIFF)  <br/> Georeferenced imagery (GeoTIFF) |  |
+| 1 | `id` | Eigene Definition / Own Definition| Eindeutige Fund-ID [z.B. “1, 2, 3”] <br/> Unique ID of the find [e.g. “1, 2, 3”]| Number |
+| 2 | `sensor` | Eigene Definition / Own Definition| Messgerät [z.B. “Magnetometer”] <br/> Measuring equipment [e.g. “magnetometer”]| String |
+| 3 | `unit` | Eigene Definition / Own Definition| Einheit der Messung[z.B. “nT”, “m”, “EA”] <br/> Unit of measurement e.g. “nT”, “m”, “EA”] | String |
+| 4 | `detection_confidence` | Eigene Definition / Own Definition| Wahrscheinlichkeit für Echtheit in %[z.B. 0.87, 0.99, 1] <br/> Probability of authenticity in % [e.g. 0.87, 0.99, 1] | Number |
+| 5 | `status` | Eigene Definition / Own Definition| Status[”Bestätigt” / “Unbestätigt”]  <br/> Status ["confirmed” / “unconfirmed”] | String |
+| 6 | `source` | Eigene Definition / Own Definition| Trägerplattform [z.B. “UAV”, “UGV”]  <br/> Carrier platform [e.g. “UAV”, “UGV”] | String |
+| 7 | `depth_estimate` | Eigene Definition / Own Definition| Geschätzte Tiefe[z.B. -2.1, -0.3]  <br/> Estimated depth [e.g. -2.1, -0.3] | Number |
+| 8 | `last_update` | Eigene Definition / Own Definition| Letzte Aktualisierung[z. B. “2025-03-20T10:45:00Z”]  <br/> Last update [e.g. “2025-03-20T10:45:00Z”] | String |
+| 9 | `image` | Eigene Definition / Own Definition| Optionales Bildmaterial <br/> Optional imagery | String |
+| 10 | `geotiff` | Eigene Definition / Own Definition| Georeferenziertes Bildmaterial (GeoTIFF)  <br/> Georeferenced imagery (GeoTIFF) | String |
 | 11 | `hazard_id` | IMSMA | Minenfeld- oder Bereichs ID  <br/> Minefield or area ID | String |
 | 12 | `hazard_status` | IMSMA | Status des Gebietes[”suspected”, “confirmed”]  <br/> Status of the area [“suspected”, “confirmed”] | String |
 | 13 | `land_use` | IMSMA | Aktuelle Landnutzung[z.B. Feld, Straße]  <br/> Current land use [e.g. field, road] | String |
 | 14 | `accessibility` | IMSMA | Zugangsbeschränkungen des sondierten Gebietes[Freitext]  <br/> Access restrictions regarding the probed area [free text] | String |
 | 15 | `survey_type` | IMSMA | Erkundungsmethode [”technical”, “non-technical”]  <br/> Reconnaissance method [“technical”, “non-technical”] | String |
-| 16 | `data_source` | IMSMA | Quelle der Information [”KI”, “NGO”, “Soldat”} <br/> Source of information [“AI”, “NGO”, “Soldier”] | String |
+| 16 | `data_source` | IMSMA | Quelle der Information [”KI”, “NGO”, “Soldat”] <br/> Source of information [“AI”, “NGO”, “Soldier”] | String |
 | 17 | `verification_type` | IMSMA | Art der Überprüfung nach Sondierung[Freitext: “visuell”, “manuell”, “etc.”)  <br/> Type of verification after probing [free text: “visually”, “manually”, “etc.”) | String |
 | 18 | `dtg` | NATO-STANAG 2221 | Datum-Zeit-Gruppe des Fundes / der Messung[z. B. “260900Amar25”] <br/> Date-time group of the find/measurement [e.g. “260900Amar25”] | String |
 | 19 | `reporting_unit` | NATO-STANAG 2221 | Meldende Einheit [z.B. “LLPiKp 270”]  <br/> Reporting unit [e.g. “270 AB Engr Coy”] | String |
@@ -200,14 +199,14 @@ These definitions are binding for all manufacturers and systems implementing Min
 | 21 | `linkup_method` | NATO-STANAG 2221 | Kommunikationsart für Verbindungsaufnahme mit meldender Einheit[z.B. “Funkfrequenz” , “Sichtzeichen”] <br/> Communication type for establishing communication with reporting unit [e.g. “radio frequency”, “visual signal”] | String |
 | 22 | `type` | NATO-STANAG 2221 | Art des Kampfmittels[z.B. Geschoss, 155mm / Mine, Panzerabwehr/Schützenabwehr / Granate, Hand] <br/> Type of explosive ordnance [e.g. shell, 155mm / mine, anti-tank / antipersonnel / grenade, hand] | String |
 | 23 | `subtype` | NATO-STANAG 2221 | Munitionssorte des Kampfmittels [z.B. HE / HE-FRAG / AP / HEAT / APHE / …] <br/> Ammunition type of ordnance [e.g. HE / HE - FRAG / AP / HEAT / APHE / …] | String |
-| 24 | `amount` | NATO-STANAG 2221 | Anzahl der Kampfmittel [z.B. 2 EA ("each"] <br/> number of EOs [e.g. 2 EA (“each”] | String | 
+| 24 | `amount` | NATO-STANAG 2221 | Anzahl der Kampfmittel [z.B. 2 EA (“each”)] <br/> number of EOs [e.g. 2 EA (“each”)] | String | 
 | 25 | `description` | NATO-STANAG 2221 | Freitextbeschreibung des Kampfmittels [z.B. zylindrisches Geschoss, Kaliber ca. 155mm, mit kegelförmiger Spitze] <br/> Free text description of the ordnance [e.g. cylindrical projectile, calibre approx. 155mm, with conical tip] | String |
 | 26 | `location` | NATO-STANAG 2221 | Fundort des Kampfmittels - MGRS[z.B.”32UNB, 34769, 55761”] <br/> Location of the ordnance item – MGRS [ e.g. “32UNB, 34769, 55761”] | String |
 | 27 | `tactical_situation` | NATO-STANAG 2221 | Einfluss des gefundenen Kampfmittels auf die eigene Auftragserfüllung [”None” , “Low”, “Medium”, “High”] <br/> Influence of the found ordnance on own mission performance [ˮNoneˮ, "Lowˮ, "Mediumˮ," Highˮ] | String |
 | 28 | `collateral_dmg` | NATO-STANAG 2221 | Bereits eingetretene oder mögliche Begleitschäden [z.B. “Funkturm als kritische Infrastruktur direkt nebenan”] <br/> [e.g. "Radio tower as critical infrastructure directly adjoining”] | String |
 | 29 | `protective_actions` | NATO-STANAG 2221 | eingeleitete Schutzmaßnahmen [z.B. “umliegende Häuser evakuiert”] <br/> Protective measures initiated [e.g. “surrounding houses evacuated”] | String |
 | 30 | `recommended_priority` | NATO-STANAG 2221 | empfohlene Priorität gem. Bewertung der meldenden Einheit [”immediate” , “urgent”,  “routine”  , “no threat”] <br/> Recommended priority IAW assessment of the reporting unit [“immediate”, “urgent”, “routine”, “no threat”] | String |
-| 31 | `rank_name` | Eigene Definition Own Defenition| Messung durchgeführt durch[z.B. “HF Müller”] <br/> Measurement performed by [e.g. “OR-7 Müller”] | String |
+| 31 | `rank_name` | Eigene Definition / Own Definition| Messung durchgeführt durch[z.B. “HF Müller”] <br/> Measurement performed by [e.g. “OR-7 Müller”] | String |
 
 ---
 
@@ -231,7 +230,7 @@ Jede offizielle Änderung oder Erweiterung des Standards wird mit einer neuen Ve
 
 ### 6. Extensibility & sustained future use
 
-MINE-GeoJSON is designed to allow the standard to grow with future requirements. The structure of the format allows to integrate additional fields into the   block, but only by the responsible publishers of the standard.
+Mine-GeoJSON is designed to allow the standard to grow with future requirements. The structure of the format allows to integrate additional fields into the properties block, but only by the responsible publishers of the standard.
 Principles of extension:
 - **Central maintenance**: Extensions are made exclusively by the central project management and are made known via versioning.
 - **Ensure uniformity**: In order to ensure the interoperability and comparability of the data, the extension by third parties is not intended.
@@ -271,7 +270,7 @@ Das Schema wird gemeinsam mit dem Handbuch und der Beispieldatei bereitgestellt.
 
 ### 7. Validation
 
-To ensure consistent data quality and compatibility, a JSON form (validation-capable) is provided for Mine-GeoJSON. This schema defines all mandatory fields, data types, permitted value ranges, and optional fields.
+To ensure consistent data quality and compatibility, a JSON Schema (validation-capable) is provided for Mine-GeoJSON. This schema defines all mandatory fields, data types, permitted value ranges, and optional fields.
 
 Aim of validation
 - Ensure data quality and format compliance
@@ -280,7 +279,7 @@ Aim of validation
 
 ## Validation options
 - Online validator (e.g. https://jsonschemavalidator.net)
-- Local test script (Python, node.js, etc.) with provided format
+- Local test script (Python, node.js, etc.) with the provided schema
 
 ### Validity criteria
 
@@ -330,7 +329,7 @@ Mine-GeoJSON unterstützt die Einbindung visueller Informationen zur Ergänzung 
 
 ### 8. Integration of image & geospatial data
 
-MINE-GeoJSON supports the integration of visual information to complement structured detection data. Two dedicated fields are available for this purpose:
+Mine-GeoJSON supports the integration of visual information to complement structured detection data. Two dedicated fields are available for this purpose:
 
 ### `image` - Linked object image
 - **Type**: URL or relative path
@@ -358,7 +357,7 @@ MINE-GeoJSON supports the integration of visual information to complement struct
 
 ### Benefit
 - Visual traceability of finds
-- Improvement of basis for operational decision-making bases
+- Improvement of the basis for operational decision-making
 - Support for handover, documentation and analysis
 
 
@@ -382,7 +381,7 @@ The following are typical use cases where Mine-GeoJSON is used. The examples sho
     },
     
     "properties": {
-        "id": "001",
+        "id": 1,
         "type": "UXO",
         "subtype": "PTAB",
         "unit": "EA",
@@ -390,19 +389,16 @@ The following are typical use cases where Mine-GeoJSON is used. The examples sho
         "description": "cylindrical with fins",
         "hazard_status": "suspected",
         "hazard_id": "AREA-03",
-        "dtg": "2026-11-01T08:07:43Z",
+        "dtg": "010807ZNOV26",
         "last_update": "2026-10-01T08:10:00Z",
         "sensor": "optical",
         "depth_estimate": -0.1,
         "source": "UAV",
         "survey_type": "technical",
-        "data_source": "UAV-Software",
+        "data_source": "KI",
         "detection_confidence": 0.89,
         "reporting_unit": "LLPiKp 270",
-        "linkup_location": [
-                            "32UPE",
-                            "61617",
-                            "89007"]
+        "linkup_location": "32UPE, 61617, 89007"
         }
 }
 ```
@@ -427,11 +423,11 @@ The following are typical use cases where Mine-GeoJSON is used. The examples sho
 
                             ["32UNB",
                             "39205",
-                            "58210"],
+                            "58215"],
 
                                 ["32UNB",
                                 "39200",
-                                "58210"],
+                                "58215"],
 
                                     ["32UNB",
                                     "39200",
@@ -463,7 +459,8 @@ The following are typical use cases where Mine-GeoJSON is used. The examples sho
 "properties": {
 "unit": "EA",
 "amount": "1",
-"image": "images/TM62M-001.jpg",
+"type": "TM-62M",
+"image": "images/TM62M-001.jpg"
 }
 },
 {
@@ -475,7 +472,8 @@ The following are typical use cases where Mine-GeoJSON is used. The examples sho
 "properties": {
 "unit": "EA",
 "amount": "1",
-"image": "images/TM62M-002.jpg",
+"type": "TM-62M",
+"image": "images/TM62M-002.jpg"
 }
 },
 {
@@ -487,7 +485,8 @@ The following are typical use cases where Mine-GeoJSON is used. The examples sho
 "properties": {
 "unit": "EA",
 "amount": "1",
-"image": "images/TM62M-003.jpg",
+"type": "TM-62M",
+"image": "images/TM62M-003.jpg"
 }
 },
 {
@@ -499,7 +498,8 @@ The following are typical use cases where Mine-GeoJSON is used. The examples sho
 "properties": {
 "unit": "EA",
 "amount": "1",
-"image": "images/TM62M-004.jpg",
+"type": "TM-62M",
+"image": "images/TM62M-004.jpg"
 }
 },
 {
@@ -511,6 +511,7 @@ The following are typical use cases where Mine-GeoJSON is used. The examples sho
 "properties": {
 "unit": "EA",
 "amount": "1",
+"type": "TM-62M",
 "image": "images/TM62M-005.jpg"
 }
 }
@@ -529,7 +530,7 @@ Mine-GeoJSON ist so gestaltet, dass es sich nahtlos in bestehende Informationssy
 - QGIS, ArcGIS, Kepler.gl, u.v.m.
 - Lageinformationssysteme mit JSON/GeoJSON/Mine-GeoJSON-Schnittstelle
 
-- Erprobt wurde Mine-GeoJSON mit dem Plug-In "Minesweeper Connector" für Sitaware Frontline.  
+- Erprobt wurde Mine-GeoJSON mit dem Plug-In "Minesweeper Connector" für SitaWare Frontline.  
 
 ### Empfehlungen zur Umsetzung
 
@@ -538,7 +539,7 @@ Mine-GeoJSON ist so gestaltet, dass es sich nahtlos in bestehende Informationssy
 - Verwendung standardisierter Layer- und Objektbeschreibungen
 
 ### 10. Integration in existing systems
-MINE-GeoJSON is designed to integrate seamlessly with existing information systems. This includes both military command and control systems and civilian GIS applications.
+Mine-GeoJSON is designed to integrate seamlessly with existing information systems. This includes both military command and control systems and civilian GIS applications.
 Compatible platforms
 - QGIS, ArcGIS, Kepler.gl, etc.
 - Location information systems with JSON/GeoJSON interface
@@ -573,7 +574,7 @@ Zur Sicherstellung der Datenqualität empfiehlt Mine-GeoJSON folgende Konvention
 
 ### 11. Conventions & best practices
 
-To ensure data quality, MINE-GeoJSON recommends the following conventions:
+To ensure data quality, Mine-GeoJSON recommends the following conventions:
 
 ### File naming
 - `minegeojson_<gebiet>_<datum>.minegeojson`
@@ -583,7 +584,7 @@ To ensure data quality, MINE-GeoJSON recommends the following conventions:
 
 - ISO 8601, UTC time
     - Example: `2025-03-20T10:45:00Z`
-•	Date-time group (DTG)
+- Date-time group (DTG)
     - Example: `260900AMAR25`
 
 ### Notes on structure
@@ -602,7 +603,7 @@ Mine-GeoJSON ist ein offener, nicht-proprietärer Datenstandard. Er darf frei ge
 - Änderungen am Standard dürfen nicht als offizielle Version weitergegeben werden
 
 
-MINE-GeoJSON is an open, non-proprietary data standard. It may be freely used, extended and integrated into software systems, provided that the following conditions are met:
+Mine-GeoJSON is an open, non-proprietary data standard. It may be freely used, extended and integrated into software systems, provided that the following conditions are met:
 
 - Indicate source as Mine-GeoJSON
 - No commercial re-use without consent
@@ -614,23 +615,23 @@ MINE-GeoJSON is an open, non-proprietary data standard. It may be freely used, e
 ### 13. Kontakt & Weiterentwicklung
 
 Der Datenstandard wurde initiiert durch den Cyber Innovation Hub der Bundeswehr und maßgeblich entwickelt unter der Projektleitung von Alexander Petri, Ulf Steden, Erik Krämer und der Luftlandepionierkompanie 270 im Rahmen des Innovationsvorhaben #172 - Minesweeper.
-Youtube Link: https://youtu.be/I4TvcCWCnZo?si=7fIkJjQ65l3BrP6O
+Youtube Link: https://youtu.be/I4TvcCWCnZo
 
 Wir freuen uns über Ihre Kontaktaufnahme, wenn Sie Interesse an der Nutzung von Mine-GeoJSON haben oder uns Feedback geben möchten!
 
 ### 13. Contact & further development
 The data standard was initiated by the Bundeswehr Cyber Innovation Hub and was significantly developed under the project management of Alexander Petri, Ulf Steden, Erik Krämer and the Airborne Engineer Company 270 as part of the innovation project #172 – Minesweeper.
 
-### Kontaktstelle
-
 ---
 
-░█████╗░██╗██╗░░██╗██████╗░░██╗░░░░░░░██╗<br/>
-██╔══██╗██║██║░░██║██╔══██╗░██║░░██╗░░██║<br/>
-██║░░╚═╝██║███████║██████╦╝░╚██╗████╗██╔╝<br/>
-██║░░██╗██║██╔══██║██╔══██╗░░████╔═████║░<br/>
-╚█████╔╝██║██║░░██║██████╦╝░░╚██╔╝░╚██╔╝░<br/>
-░╚════╝░╚═╝╚═╝░░╚═╝╚═════╝░░░░╚═╝░░░╚═╝░░<br/>
+```text
+░█████╗░██╗██╗░░██╗██████╗░░██╗░░░░░░░██╗
+██╔══██╗██║██║░░██║██╔══██╗░██║░░██╗░░██║
+██║░░╚═╝██║███████║██████╦╝░╚██╗████╗██╔╝
+██║░░██╗██║██╔══██║██╔══██╗░░████╔═████║░
+╚█████╔╝██║██║░░██║██████╦╝░░╚██╔╝░╚██╔╝░
+░╚════╝░╚═╝╚═╝░░╚═╝╚═════╝░░░░╚═╝░░░╚═╝░░
+```
 
 **Cyber Innovation Hub der Bundeswehr**
 
